@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: artists
+    password: artists
+    url: jdbc:mysql://localhost:3306/artists
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
