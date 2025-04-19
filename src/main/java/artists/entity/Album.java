@@ -15,6 +15,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * 
+ * Class for the "Album" entity that has field for a generated id
+ * as well as a title and its release date
+ * "Album" has a ManyToOne relationship with "Artists" and a OneToMany relationship with "Song"
+ * 
+ **/
 @Entity
 @Data
 public class Album {
@@ -29,7 +36,7 @@ public class Album {
 	@ManyToOne
 	@JoinColumn(name = "artists_id")
 	private Artists artists;
-	
+
 	@OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude

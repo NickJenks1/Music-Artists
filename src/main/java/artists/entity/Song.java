@@ -10,6 +10,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * 
+ * Class for the "Song" entity that has field for a generated id
+ * as well as a title and length
+ * "Song" has a ManyToOne relationship with "Album"
+ * 
+ **/
 @Entity
 @Data
 public class Song {

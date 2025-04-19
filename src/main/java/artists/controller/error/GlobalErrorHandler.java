@@ -14,17 +14,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GlobalErrorHandler {
 
+	/*
+	 * Exception handler for NoSuchElementException
+	 */
 	@ExceptionHandler(NoSuchElementException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	public Map<String, String> handleNoSuchElementException(NoSuchElementException nsex) {
 		log.error("Exception occurred: {}", nsex.toString());
-		return Map.of("Not Found:", nsex.toString());
+		return Map.of("error:", nsex.toString());
 	}
 	
+	/*
+	 * Exception handler for IllegalArgumentException
+	 */
 	@ExceptionHandler(IllegalArgumentException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public Map<String, String> handleIllegalArgumentException(IllegalArgumentException iax) {
 		log.error("Exception occured:{}", iax.toString());
-		return Map.of("Bad Request:", iax.toString());
+		return Map.of("error:", iax.toString());
 	}
+
 }

@@ -11,6 +11,13 @@ import artists.entity.Song;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * Classes that take the data from the associated entity classes to form a constructor via the 
+ * NoArgsConstructor annotation, and they receive getters and setter from the Data annotation, as well as
+ * ToString, EqualsAndHashCode, etc.
+ * 
+ **/
 @Data
 @NoArgsConstructor
 public class ArtistsData {

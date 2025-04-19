@@ -13,6 +13,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * 
+ * Class for the "Artists" entity that has field for a generated id
+ * as well as a name, genre, and the year they formed
+ * "Artists" has a OneToMany relationship with album, as well as member
+ * 
+ **/
 @Entity
 @Data
 public class Artists {

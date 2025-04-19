@@ -28,6 +28,9 @@ import artists.entity.Instrument;
 @Service
 public class ArtistsService {
 
+	/**
+	 * Instances with Autowired annotation to inject managed beans into them
+	 **/
 	@Autowired
 	private ArtistsDao artistsDao;
 	@Autowired
@@ -39,6 +42,12 @@ public class ArtistsService {
 	@Autowired
 	private InstrumentDao instrumentDao;
 	
+	/**
+	 * 
+	 * Method that lists all of the information for the artists by utilizing the ArtistsDao
+	 * and adding the information to a LinkedList
+	 *
+	 **/
 	@Transactional(readOnly = true)
 	public List<ArtistsData> retrieveAllArtists() {
 		
@@ -52,6 +61,12 @@ public class ArtistsService {
 		return result;
 	}
 	
+	/**
+	 * 
+	 * Methods for accessing data by id from the "artists", "album", "song", "member", and "instrument" tables
+	 * using the methods listed below
+	 *
+	 **/
 	@Transactional(readOnly = true)
 	public ArtistsData retrieveArtistsById(Long artistsId) {
 		return new ArtistsData(findArtistsById(artistsId));
@@ -77,6 +92,12 @@ public class ArtistsService {
 		return new ArtistsInstrument(findInstrumentById(artistsId, memberId, instrumentId));
 	}
 	
+	/**
+	 * 
+	 * Methods for finding data by id using the ArtistsDao interface. 
+	 * These methods are utilized by the "retrieve" methods above
+	 *
+	 **/
 	private Artists findArtistsById(Long artistsId) {
 		return artistsDao.findById(artistsId)
 				.orElseThrow(() -> new NoSuchElementException
@@ -141,6 +162,12 @@ public class ArtistsService {
 		return instrument;
 	}
 	
+	/**
+	 * 
+	 * Methods for finding or creating data from the "artists", "album", "song", "member", and "instrument" tables
+	 * using the "find" methods listed above
+	 *
+	 **/
 	private Artists locateOrCreateArtists(Long artistsId) {
 		Artists artists;
 		
@@ -185,6 +212,12 @@ public class ArtistsService {
 		return member;
 	}
 	
+	/**
+	 * 
+	 * Methods for saving data from the "artists", "album", "song", "member", and "instrument" tables
+	 * using the "locateOrCreate" methods listed above
+	 *
+	 **/
 	@Transactional(readOnly = false)
 	public ArtistsData saveArtistsData(ArtistsData artistsData) {
 		
@@ -261,6 +294,12 @@ public class ArtistsService {
 		return new ArtistsInstrument(dbInstrument);
 	}
 	
+	/**
+	 * 
+	 * Methods for deleting data from the "artists", "album", "song", "member", and "instrument" tables
+	 * using the associated DAO interface
+	 *
+	 **/
 	public void deleteArtistById(Long artistsId) {
 		
 		Artists artists = findArtistsById(artistsId);
@@ -291,6 +330,11 @@ public class ArtistsService {
 		instrumentDao.delete(instrument);
 	}
 	
+	/**
+	 * 
+	 * Methods to copy the information over from ArtistsData.java classes to the associated entity file
+	 *
+	 **/
 	private void copyArtistsFields(Artists artists, ArtistsData artistsData) {
 		artists.setArtistsName(artistsData.getArtistsName());
 		artists.setGenre(artistsData.getGenre());

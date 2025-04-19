@@ -15,6 +15,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * 
+ * Class for the "Member" entity that has field for a generated id
+ * as well as a name for the member
+ * "Member" has a ManyToOne relationship with  and a ManyToMany with "Instrument"
+ * 
+ **/
 @Entity
 @Data
 public class Member {
